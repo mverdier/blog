@@ -12,12 +12,20 @@
 	
 	<body ng-app="myApp">
 
-		<nav>
+		<nav class="green darken-1">
 			<div class="nav-wrapper row">
 				<div class="col s12">
+					<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+
 					<a class="brand-logo" href="http://blog.martin-verdier.com/">Blog - Tech and Code</a>
 
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><a href="http://martin-verdier.com/">Home</a></li>
+						<li><a href="http://projects.martin-verdier.com/">Projects</a></li>
+						<li><a href="http://pro.martin-verdier.com/">Resume</a></li>
+					</ul>
+
+					<ul class="side-nav" id="mobile-nav">
 						<li><a href="http://martin-verdier.com/">Home</a></li>
 						<li><a href="http://projects.martin-verdier.com/">Projects</a></li>
 						<li><a href="http://pro.martin-verdier.com/">Resume</a></li>
@@ -27,14 +35,40 @@
 		</nav>
 
 
+
+
+
+		<footer class="page-footer green darken-1">
+			<div class="container grey-text text-lighten-4">
+				<div class="row">
+					<p>Blog designed and developed by <a href="http://martin-verdier.com/" target="_blank">Martin Verdier</a> in November 2016.</p>
+					<p>OCTOCAT® is the property of GitHub, Inc. You can find every legal stuff about it over <a href="https://github.com/logos" target="_blank">here</a>!</p>
+					<p>About open-source, you can use this blog template as yours, it's open-sourced right <a href="https://github.com/mverdier/blog-public" target="_blank">here on GitHub</a>!</p>
+				</div>
+			</div>
+			<div class="footer-copyright">
+				<div class="container">
+					© 2016 Martin Verdier
+					<a class="grey-text text-lighten-4 right" href="http://martin-verdier.com/LICENSE" target="_blank">MIT License</a>
+				</div>
+			</div>
+		</footer>
+
+
 		<!-- Modules -->
 		<script src="js/app.js"></script>
 
 		<!-- Materialize -->
 		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script src="js/materialize.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$(".button-collapse").sideNav();
+			})
+		</script>
 
 		<!-- Controllers -->
 		<script src="js/controllers/BlogController.js"></script>
+
 	</body>
 </html>

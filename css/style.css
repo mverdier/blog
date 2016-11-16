@@ -1,0 +1,11 @@
+footer {
+	margin-top: 40px;
+}
+
+footer>.container {
+	font-size: 13px;
+}
+
+.footer-copyright {
+	font-size: 1em;
+}
