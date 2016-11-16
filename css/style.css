@@ -1,3 +1,7 @@
+body {
+	background-color: #FCFCFC;
+}
+
 footer {
 	margin-top: 40px;
 }
@@ -8,4 +12,26 @@ footer>.container {
 
 .footer-copyright {
 	font-size: 1em;
+}
+
+.content {
+	margin-top: 30px;
+}
+
+.title-image {
+	max-height: 200px;
+	overflow: hidden;
+}
+
+footer a {
+	color: #d4e157;
+}
+
+
+.articles {
+	background-color: red;
+}
+
+.more {
+	background-color: blue;
 }

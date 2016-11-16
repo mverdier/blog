@@ -10,7 +10,7 @@
 		<script src="js/angular.min.js"></script>
 	</head>
 	
-	<body ng-app="myApp">
+	<body ng-app="myApp" ng-controller="BlogController">
 
 		<nav class="green darken-1">
 			<div class="nav-wrapper row">
@@ -34,9 +34,46 @@
 			</div>
 		</nav>
 
+		<div class="container content">
+			<div class="row">
+				<div class="articles container col s12 m12 l8">
+					<div class="row">
 
+						<div class="col s12" ng-repeat="article in articles">
+							<div class="card">
+								<div class="card-image" ng-if="article.pictureHeader && article.pictureHeader != ''">
+									<div class="title-image">
+										<img ng-src="../articles/images/{{ article.pictureHeader }}">
+									</div>
+									<span class="card-title">{{ article.title }}</span>
+								</div>
+								<div class="card-content">
+									<span class="card-title" ng-if="!article.pictureHeader || article.pictureHeader == ''">{{ article.title }}</span>
+									<p>{{ article.preview }}</p>
+								</div>
+								<div class="card-action">
+									<a href="#">Continue reading</a>
+									<a href="#">Comments</a>
+								</div>
+							</div>
+						</div>
 
+					</div>
+				</div>
 
+				<div class="more col s12 m12 l4">
+					<div class="col s12">
+						<div class="card">
+							<div class="card-content">
+								<span class="card-title">Who am I again?</span>
+								<p>Hi! I'm Martin, I developed this blog and I'm also the one that's posting on it.</p>
+								<p>To make a quick description of myself, I'm a software developer. I love coding, tech gadgets, and new stuff overall. I also love maps, traveling, and taking pictures!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<footer class="page-footer green darken-1">
 			<div class="container grey-text text-lighten-4">
