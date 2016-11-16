@@ -1,4 +1,8 @@
-app.controller('BlogController', ['$scope', '$http', function($scope, $http) {
+app.controller('BlogController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+
+	console.log($location.path());
+
+	$location.path("/test");
 
 	$scope.articles = [{
 		"pictureHeader": "sample-1.jpg",
@@ -17,6 +21,4 @@ app.controller('BlogController', ['$scope', '$http', function($scope, $http) {
 		"author": "Martin",
 		"publicationDate": Date()
 	}];
-
-	console.log("test");
 }]);
