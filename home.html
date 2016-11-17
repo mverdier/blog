@@ -38,8 +38,8 @@
 		<nav id="breadcrumbs" class="green darken-1">
 			<div class="nav-wrapper row">
 				<div class="col s12">
-					<a href="#!" class="breadcrumb">Blog</a>
-					<a href="#!" class="breadcrumb">{{ selectedArticle.title }}</a>
+					<a href="#!" ng-click="back()" class="breadcrumb">Blog</a>
+					<span class="breadcrumb">{{ selectedArticle.title }}</span>
 				</div>
 			</div>
 		</nav>
@@ -64,8 +64,8 @@
 									<p>{{ article.preview }}</p>
 								</div>
 								<div class="card-action">
-									<a ng-click="getArticle(article.url)">Read more</a>
-									<a ng-click="comments(article.url)">Comments</a>
+									<a href="#!" ng-click="getArticle(article.url)">Read more</a>
+									<a href="#!" ng-click="comments(article.url)">Comments</a>
 								</div>
 							</div>
 						</div>
