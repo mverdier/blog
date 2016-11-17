@@ -35,7 +35,7 @@
 
 				<div class="breadcrumbs col s12">
 					<a href="#!" class="breadcrumb">Blog</a>
-					<a href="#!" class="breadcrumb">{{ selectArticle.title }}</a>
+					<a href="#!" class="breadcrumb">{{ selectedArticle.title }}</a>
 				</div>
 			</div>
 		</nav>
@@ -101,16 +101,16 @@
 		<div id="article-page" class="container">
 			<div class="col s12">
 				<div class="card">
-					<div class="card-image" ng-if="selectArticle.pictureHeader && selectArticle.pictureHeader != ''">
+					<div class="card-image" ng-if="selectedArticle.pictureHeader && selectedArticle.pictureHeader != ''">
 						<div class="title-image">
-							<img ng-src="http://resources.martin-verdier.com/articles/images/{{ selectArticle.pictureHeader }}">
+							<img ng-src="http://resources.martin-verdier.com/articles/images/{{ selectedArticle.pictureHeader }}">
 						</div>
-						<span class="card-title">{{ selectArticle.title }}</span>
+						<span class="card-title">{{ selectedArticle.title }}</span>
 					</div>
 					<div class="card-content">
-						<span class="card-title" ng-if="!selectArticle.pictureHeader || selectArticle.pictureHeader == ''">{{ selectArticle.title }}</span>
+						<span class="card-title" ng-if="!selectedArticle.pictureHeader || selectedArticle.pictureHeader == ''">{{ selectedArticle.title }}</span>
 						<div class="article-content">
-							<p>{{ selectArticle.preview }}</p>
+							<p>{{ selectedArticle.preview }}</p>
 							<div class="divider"></div>
 							<div ng-bind-html="selectedArticle.content"></div>
 						</div>
