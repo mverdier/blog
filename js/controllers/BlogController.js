@@ -1,9 +1,5 @@
 app.controller('BlogController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
-	console.log($location.path());
-
-	$location.path("/test");
-
 	$scope.articles = [{
 		"pictureHeader": "sample-1.jpg",
 		"title": "Test article",
