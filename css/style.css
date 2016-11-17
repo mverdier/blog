@@ -30,3 +30,7 @@ footer a {
 .card-content p {
 	text-align: justify;
 }
+
+.breadcrumbs {
+	display: none;
+}
