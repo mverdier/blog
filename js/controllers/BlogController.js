@@ -26,7 +26,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 	};
 
 	if (path != "" && path != "/") {
-		getArticle(path.substring(1));
+		$scope.getArticle(path.substring(1));
 	}
 
 	$scope.page = 1;
