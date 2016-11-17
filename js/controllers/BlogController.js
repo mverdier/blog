@@ -1,5 +1,9 @@
 app.controller('BlogController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
+	console.log($location.path());
+
+	var path = $location.path();
+
 	$scope.getArticle = function(url) {
 		//GET request for a specific article
 		$scope.selectedArticle = {
@@ -21,8 +25,8 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		document.getElementById('breadcrumbs').style.display = "block";
 	};
 
-	if ($location.path() != "" && $location.path() != "/") {
-		getArticle($location.path().substring(1));
+	if (path != "" && path != "/") {
+		getArticle(path.substring(1));
 	}
 
 	$scope.page = 1;
