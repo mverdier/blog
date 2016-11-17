@@ -116,6 +116,12 @@
 						<div class="article-content">
 							<p>{{ selectedArticle.preview }}</p>
 							<div ng-bind-html="selectedArticle.content"></div>
+
+							<div class="divider">
+
+							<div class="meta">
+								<p>Written by {{ selectedArticle.author }} on {{ selectedArticle.publicationDate | date 'fullDate' }}</p>
+							</div>
 						</div>
 					</div>
 				</div>
