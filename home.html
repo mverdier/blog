@@ -42,6 +42,8 @@
 
 		<div class="container list-page">
 			<div class="row">
+
+				<!-- The main column, that displays a list of available articles -->
 				<div class="article-list container col s12 m12 l8">
 					<div class="row">
 
@@ -67,6 +69,7 @@
 					</div>
 				</div>
 
+				<!-- The rightmost column, with some extra info about me and the website -->
 				<div class="more col s12 m12 l4">
 					<div class="col s12">
 						<div class="card">
@@ -79,6 +82,7 @@
 					</div>
 				</div>
 
+				<!-- The pagination part, at the bottom -->
 				<div class="col s12 m12 l8 center">
 					 <ul class="pagination">
 						<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
@@ -93,6 +97,7 @@
 			</div>
 		</div>
 
+		<!-- The page that will be displayed when an article is expanded -->
 		<div class="container article-page">
 			<div class="col s12">
 				<div class="card">
@@ -106,7 +111,8 @@
 						<span class="card-title" ng-if="!selectArticle.pictureHeader || selectArticle.pictureHeader == ''">{{ selectArticle.title }}</span>
 						<div class="article-content">
 							<p>{{ selectArticle.preview }}</p>
-							{{ selectArticle.content }}
+							<div class="divider"></div>
+							<div ng-bind-html="{{ selectedArticle.content }}"></div>
 						</div>
 					</div>
 				</div>
