@@ -1,5 +1,14 @@
 app.controller('BlogController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
+	console.log($location.path());
+	console.log($location.path() == undefined);
+
+	if ($location.path() != "" && $location.path() != "/") {
+		console.log($location.path());
+	} else {
+		console.log("main");
+	}
+
 	$scope.page = 1;
 
 	$scope.articles = [{
