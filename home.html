@@ -40,9 +40,9 @@
 			</div>
 		</nav>
 
-		<div class="container content">
+		<div class="container list-page">
 			<div class="row">
-				<div class="articles container col s12 m12 l8">
+				<div class="article-list container col s12 m12 l8">
 					<div class="row">
 
 						<div class="col s12" ng-repeat="article in articles">
@@ -89,6 +89,26 @@
 						<li class="waves-effect"><a href="#!">5</a></li>
 						<li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
 					  </ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="container article-page">
+			<div class="col s12">
+				<div class="card">
+					<div class="card-image" ng-if="selectArticle.pictureHeader && selectArticle.pictureHeader != ''">
+						<div class="title-image">
+							<img ng-src="http://resources.martin-verdier.com/articles/images/{{ selectArticle.pictureHeader }}">
+						</div>
+						<span class="card-title">{{ selectArticle.title }}</span>
+					</div>
+					<div class="card-content">
+						<span class="card-title" ng-if="!selectArticle.pictureHeader || selectArticle.pictureHeader == ''">{{ selectArticle.title }}</span>
+						<div class="article-content">
+							<p>{{ selectArticle.preview }}</p>
+							{{ selectArticle.content }}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
