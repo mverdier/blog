@@ -44,4 +44,17 @@ footer a {
 	margin: auto;
 	display: block;
 	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
+#article-page figcaption {
+	font-style: italic;
+	color: #9b9b9b;
+	margin: auto;
+	margin-bottom: 15px;
+}
+
+.divider {
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
