@@ -20,7 +20,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		"publicationDate": Date()
 	}];
 
-	$scope.article = function(url) {
+	$scope.getArticle = function(url) {
 		//GET request for a specific article
 		$scope.selectedArticle = {
 			"pictureHeader": "sample-1.jpg",
@@ -40,7 +40,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 	};
 
 	$scope.comments = function(url) {
-		article(url);
+		getArticle(url);
 		//Scroll down to the comments
 	};
 }]);
