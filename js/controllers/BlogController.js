@@ -1,12 +1,7 @@
 app.controller('BlogController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
-	console.log($location.path());
-	console.log($location.path() == undefined);
-
 	if ($location.path() != "" && $location.path() != "/") {
-		console.log($location.path());
-	} else {
-		console.log("main");
+		getArticle($location.path().substring(1));
 	}
 
 	$scope.page = 1;
