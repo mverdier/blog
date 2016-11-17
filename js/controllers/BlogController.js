@@ -1,7 +1,5 @@
 app.controller('BlogController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
-	console.log($location.path());
-
 	var path = $location.path();
 
 	$scope.getArticle = function(url) {
