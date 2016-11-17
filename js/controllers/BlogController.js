@@ -80,7 +80,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 			//We prevent it from being used ONLY if an article is open
 			if (doPrevent && document.getElementById('article-page').style.display == "block") {
 				event.preventDefault();
-				back();
+				$scope.back();
 			}
 		}
 	});
