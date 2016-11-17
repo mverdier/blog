@@ -33,7 +33,7 @@
 					</ul>
 				</div>
 
-				<div class="breadcrumbs col s12">
+				<div id="breadcrumbs" class="col s12">
 					<a href="#!" class="breadcrumb">Blog</a>
 					<a href="#!" class="breadcrumb">{{ selectedArticle.title }}</a>
 				</div>
@@ -111,8 +111,7 @@
 						<span class="card-title" ng-if="!selectedArticle.pictureHeader || selectedArticle.pictureHeader == ''">{{ selectedArticle.title }}</span>
 						<div class="article-content">
 							<p>{{ selectedArticle.preview }}</p>
-							<div class="divider"></div>
-							<div ng-bind-html="selectedArticle.content"></div>
+							<div class="divider">id="breadcrumbs" </div							<div ng-bind-html="selectedArticle.content"></div>
 						</div>
 					</div>
 				</div>

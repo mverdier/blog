@@ -37,6 +37,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		//WHEN LOADED Switch to the article element
 		document.getElementById('list-page').style.display = "none";
 		document.getElementById('article-page').style.display = "block";
+		document.getElementById('breadcrumbs').style.display = "block";
 	};
 
 	$scope.comments = function(url) {
