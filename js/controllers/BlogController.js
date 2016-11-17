@@ -1,5 +1,7 @@
 app.controller('BlogController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
+	$scope.page = 1;
+
 	$scope.articles = [{
 		"pictureHeader": "sample-1.jpg",
 		"url": "article-url",
@@ -44,4 +46,10 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		getArticle(url);
 		//Scroll down to the comments
 	};
+
+	$scope.back = function() {
+		document.getElementById('list-page').style.display = "block";
+		document.getElementById('article-page').style.display = "none";
+		document.getElementById('breadcrumbs').style.display = "none";
+	}
 }]);
