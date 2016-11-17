@@ -33,13 +33,10 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		};
 
 		//WHILE LOADING Display a loading animation at the top
-		console.log("1");
 
 		//WHEN LOADED Switch to the article element
 		document.getElementById('list-page').style.display = "none";
 		document.getElementById('article-page').style.display = "block";
-
-		console.log("2");
 	};
 
 	$scope.comments = function(url) {
