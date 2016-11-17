@@ -42,4 +42,6 @@ footer a {
 #article-page img {
 	max-width: 100%;
 	margin: auto;
+	display: block;
+	margin-top: 15px;
 }
