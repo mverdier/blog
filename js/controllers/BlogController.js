@@ -50,7 +50,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 	}];
 
 	$scope.comments = function(url) {
-		getArticle(url);
+		$scope.getArticle(url);
 		//Scroll down to the comments
 	};
 
