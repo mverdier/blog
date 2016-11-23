@@ -44,7 +44,7 @@
 			</div>
 		</nav>
 
-		<div id="list-page" class="container">
+		<div id="page-content" class="container">
 			<div class="row">
 
 				<!-- The main column, that displays a list of available articles -->
@@ -73,6 +73,33 @@
 					</div>
 				</div>
 
+				<!-- The page that will be displayed when an article is expanded -->
+				<div id="article-page" class="container col s12 m12 l8">
+					<div class="row">
+						<div class="card">
+							<div class="card-image" ng-if="selectedArticle.pictureHeader && selectedArticle.pictureHeader != ''">
+								<div class="title-image">
+									<img ng-src="http://resources.martin-verdier.com/articles/images/{{ selectedArticle.pictureHeader }}">
+								</div>
+								<span class="card-title">{{ selectedArticle.title }}</span>
+							</div>
+							<div class="card-content">
+								<span class="card-title" ng-if="!selectedArticle.pictureHeader || selectedArticle.pictureHeader == ''">{{ selectedArticle.title }}</span>
+								<div class="article-content">
+									<p>{{ selectedArticle.preview }}</p>
+									<div ng-bind-html="selectedArticle.content"></div>
+
+									<div class="divider"></div>
+
+									<div class="meta">
+										<p>Written by {{ selectedArticle.author }} on {{ selectedArticle.publicationDate | date: 'EEEE, MMMM d, y' }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<!-- The rightmost column, with some extra info about me and the website -->
 				<div class="more col s12 m12 l4">
 					<div class="col s12">
@@ -97,35 +124,6 @@
 						<li class="waves-effect"><a href="#">5</a></li>
 						<li class="waves-effect"><a href="#"><i class="material-icons">chevron_right</i></a></li>
 					  </ul>
-				</div>
-			</div>
-		</div>
-
-		<!-- The page that will be displayed when an article is expanded -->
-		<div id="article-page" class="container">
-			<div class="row">
-				<div class="col s12 m12 l8">
-					<div class="card">
-						<div class="card-image" ng-if="selectedArticle.pictureHeader && selectedArticle.pictureHeader != ''">
-							<div class="title-image">
-								<img ng-src="http://resources.martin-verdier.com/articles/images/{{ selectedArticle.pictureHeader }}">
-							</div>
-							<span class="card-title">{{ selectedArticle.title }}</span>
-						</div>
-						<div class="card-content">
-							<span class="card-title" ng-if="!selectedArticle.pictureHeader || selectedArticle.pictureHeader == ''">{{ selectedArticle.title }}</span>
-							<div class="article-content">
-								<p>{{ selectedArticle.preview }}</p>
-								<div ng-bind-html="selectedArticle.content"></div>
-
-								<div class="divider"></div>
-
-								<div class="meta">
-									<p>Written by {{ selectedArticle.author }} on {{ selectedArticle.publicationDate | date: 'EEEE, MMMM d, y' }}</p>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
