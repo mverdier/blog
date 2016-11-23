@@ -62,7 +62,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 
 	$scope.back = function() {
 		$location.path("");
-		document.getElementById('list-page').style.display = "block";
+		document.getElementById('article-list').style.display = "block";
 		document.getElementById('article-page').style.display = "none";
 		document.getElementById('breadcrumbs').style.display = "none";
 	};
