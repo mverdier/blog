@@ -14,7 +14,7 @@ footer>.container {
 	font-size: 1em;
 }
 
-#list-page {
+#list-page, #article-page {
 	margin-top: 30px;
 }
 
