@@ -3,7 +3,6 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 	var path = $location.path();
 
 	$scope.getArticle = function(url) {
-		//GET request for a specific article
 		$scope.selectedArticle = {
 			"pictureHeader": "sample-1.jpg",
 			"url": "article-url",
@@ -14,10 +13,6 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 			"publicationDate": Date()
 		};
 
-		//WHILE LOADING Display a loading animation at the top
-
-		//WHEN LOADED Switch to the article element
-		$location.path($scope.selectedArticle.url);
 		document.getElementById('list-page').style.display = "none";
 		document.getElementById('article-page').style.display = "block";
 		document.getElementById('breadcrumbs').style.display = "block";
@@ -49,8 +44,19 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		"publicationDate": Date()
 	}];
 
+
+	$scope.openArticle = function(url) {
+		//GET request for a specific article
+		$scope.getArticle(url);
+
+		//WHILE LOADING Display a loading animation at the top
+
+		//WHEN LOADED Switch to the article element
+		$location.path($scope.selectedArticle.url);
+	};
+
 	$scope.comments = function(url) {
-		getArticle(url);
+		$scope.openArticle(url);
 		//Scroll down to the comments
 	};
 
@@ -90,6 +96,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 			if (doPrevent && document.getElementById('article-page').style.display == "block") {
 				event.preventDefault();
 				$scope.back();
+				$location.path("");
 			}
 		}
 	});
