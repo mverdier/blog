@@ -13,7 +13,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 			"publicationDate": Date()
 		};
 
-		document.getElementById('list-page').style.display = "none";
+		document.getElementById('article-list').style.display = "none";
 		document.getElementById('article-page').style.display = "block";
 		document.getElementById('breadcrumbs').style.display = "block";
 	};
