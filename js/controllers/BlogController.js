@@ -2,64 +2,158 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 
 	var path = $location.path();
 
+	/*
+	 * Gets an article content for a specified article url
+	 */
 	$scope.getArticle = function(url) {
-		$scope.selectedArticle = {
-			"pictureHeader": "sample-1.jpg",
-			"url": "article-url",
-			"title": "Test article",
-			"preview": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-			"content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem <a href='#'>accusantium</a> doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p><p>Proin pretium nec nibh venenatis euismod. Donec sed lorem nec ligula vulputate mattis non eget lacus. Sed eu interdum elit. Suspendisse turpis erat, posuere eget imperdiet eget, tempus ut eros. Fusce mattis purus eget interdum tristique. Phasellus rhoncus aliquet ante eget ultricies. Nullam felis dui, elementum ac tincidunt at, blandit eu mauris. Cras tortor augue, lobortis non mattis ullamcorper, bibendum in elit. Etiam id nunc at sapien facilisis venenatis quis id mauris. Nunc consectetur efficitur urna. Cras eleifend fringilla mattis. Vivamus vitae viverra odio, quis convallis urna. Ut vulputate odio nec erat vestibulum, vitae laoreet mi rutrum. Ut eget nulla felis.</p><p>In dolor purus, gravida quis arcu a, ultricies tristique quam. Aenean feugiat commodo tortor, non varius justo tempus in. Nunc ut accumsan libero. Duis a nibh ut metus tincidunt sodales. Pellentesque feugiat nisi et nibh ultrices, at euismod velit faucibus. Nulla scelerisque iaculis tortor sed hendrerit. Phasellus porta, quam eu dapibus tristique, magna mauris lacinia neque, et rutrum ligula eros id felis. In vel magna justo.</p><img src='http://resources.martin-verdier.com/articles/images/sample-1.jpg'><figcaption>Picture of mountains</figcaption><p>Donec scelerisque dolor sed purus bibendum, sit amet commodo nisi fringilla. Sed maximus enim odio, in vulputate eros posuere ac. Morbi ultrices auctor metus non eleifend. Phasellus at ultrices massa. Maecenas ipsum nisi, lobortis quis odio in, euismod iaculis ex. Fusce nunc massa, auctor vel sodales id, semper ut ligula. Proin nec faucibus risus, non malesuada eros. Morbi euismod aliquam metus, ut tincidunt ligula congue quis. Vivamus elementum gravida lacinia. Nullam vehicula ac nulla et ornare. In hac habitasse platea dictumst. Quisque vitae eleifend felis, ut laoreet nisl. In nunc mauris, sagittis at egestas quis, porttitor ac magna.</p>",
-			"author": "Martin",
-			"publicationDate": Date()
-		};
+		$http({
+			method: 'GET',
+			url: 'http://blog.martin-verdier.com/api/article?url=' + url
+		}).then(function successCallback(response) {
+			//TODO Display a loading animation at the top
 
-		document.getElementById('article-list').style.display = "none";
-		document.getElementById('article-page').style.display = "block";
-		document.getElementById('breadcrumbs').style.display = "block";
+			if (response.data.length === 0) {
+				//TODO There were no article to display at this URL, displaying an error message
+			} else {
+				$scope.selectedArticle = response.data;
+			}
+
+			//TODO Hide loading animation
+
+			//Displays the correct page
+			document.getElementById('article-list').style.display = "none";
+			document.getElementById('article-page').style.display = "block";
+			document.getElementById('breadcrumbs').style.display = "block";
+
+		}, function errorCallback(response) {
+			//TODO Display an error message
+
+			//TODO Hide loading animation
+		});
 	};
 
+	//Setting up pagination and latest articles
+	$scope.maxPage = 1;
+	$scope.setupPages();
+	$scope.latest();
+
+	//Setting the current page at 1 by default
+	$scope.page = 1;
+
+	//Checking if the accessed page was the basic one or a custom url
 	if (path != "" && path != "/") {
+
+		//TODO Check if the path is just a number and get the matching page at load
 		$scope.getArticle(path.substring(1));
 	}
 
-	$scope.page = 1;
+	$scope.articles;
 
-	$scope.articles = [{
-		"pictureHeader": "sample-1.jpg",
-		"url": "article-url",
-		"title": "Test article",
-		"preview": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		"content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
-		"author": "Martin",
-		"publicationDate": Date()
-	},
+	$scope.getPage($scope.page);
 
-	{
-		"pictureHeader": "sample-1.jpg",
-		"url": "article-url",
-		"title": "Test article",
-		"preview": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		"content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
-		"author": "Martin",
-		"publicationDate": Date()
-	}];
+	/*
+	 * Sets up the pagination part
+	 */
+	$scope.setupPages = function() {
+		$http({
+			method: 'GET',
+			url: 'http://blog.martin-verdier.com/api/pageCount'
+		}).then(function successCallback(response) {
+			//TODO Display a loading animation at the top
+
+			if (response.data.length === 0) {
+				//TODO There were no data to return, displaying an error message
+			} else {
+				$scope.maxPage = response.data;
+			}
+
+			//TODO Hide loading animation
+
+		}, function errorCallback(response) {
+			//TODO Display an error message
+
+			//TODO Hide loading animation
+		});
+	}
+
+	/*
+	 * Sets up the latest 7 articles
+	 */
+	$scope.latest = function() {
+		$http({
+			method: 'GET',
+			url: 'http://blog.martin-verdier.com/api/latest'
+		}).then(function successCallback(response) {
+			//TODO Display a loading animation at the top
+
+			if (response.data.length === 0) {
+				//TODO There were no articles to display, displaying an error message
+			} else {
+				$scope.latest = response.data;
+			}
+
+			//TODO Hide loading animation
+
+		}, function errorCallback(response) {
+			//TODO Display an error message
+
+			//TODO Hide loading animation
+		});
+	}
+
+	/*
+	 * Gets a page content for a specified page number
+	 */
+	$scope.getPage = function(pageNumber) {
+		$http({
+			method: 'GET',
+			url: 'http://blog.martin-verdier.com/api/page?number=' + pageNumber
+		}).then(function successCallback(response) {
+			//TODO Display a loading animation at the top
+
+			if (response.data.length === 0) {
+				//TODO There were no articles to display, displaying an error message
+			} else {
+				$scope.articles = response.data;
+			}
+
+			//TODO Hide loading animation
+
+		}, function errorCallback(response) {
+			//TODO Display an error message
+
+			//TODO Hide loading animation
+		});
+	}
 
 
+	/*
+	 * Actually opens an article from the list page
+	 * What it does besides loading it is updating the url for sharing purposes
+	 */
 	$scope.openArticle = function(url) {
 		//GET request for a specific article
 		$scope.getArticle(url);
 
-		//WHILE LOADING Display a loading animation at the top
+		//TODO Display a loading animation at the top
 
-		//WHEN LOADED Switch to the article element
+		//Switch to the article element
 		$location.path($scope.selectedArticle.url);
+
+		//TODO Hide the loading animation
 	};
 
+	/*
+	 * Opens an article towards the comment section
+	 */
 	$scope.comments = function(url) {
 		$scope.openArticle(url);
 		//Scroll down to the comments
 	};
 
+	/*
+	 * Takes the user back to the previous article list page they were on
+	 */
 	$scope.back = function() {
 		$location.path("");
 		document.getElementById('article-list').style.display = "block";
@@ -67,9 +161,11 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		document.getElementById('breadcrumbs').style.display = "none";
 	};
 
-	//Overriding the backspace key to use the back() method instead
-	//The joys of a single-page application
-	//Props to user erikkallen on StackOverflow! http://stackoverflow.com/a/2768256
+	/*
+	 * Overriding the backspace key to use the back() method instead
+	 * The joys of a single-page application
+	 * Props to user erikkallen on StackOverflow! http://stackoverflow.com/a/2768256
+	 */
 	$(document).unbind('keydown').bind('keydown', function (event) {
 		if (event.keyCode === 8) {
 			var doPrevent = true;
