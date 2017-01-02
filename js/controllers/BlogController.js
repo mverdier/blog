@@ -1,7 +1,5 @@
 app.controller('BlogController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
-	var path = $location.path();
-
 	/*
 	 * Gets an article content for a specified article url
 	 */
@@ -31,25 +29,6 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 			//TODO Hide loading animation
 		});
 	};
-
-	//Setting up pagination and latest articles
-	$scope.maxPage = 1;
-	$scope.setupPages();
-	$scope.latest();
-
-	//Setting the current page at 1 by default
-	$scope.page = 1;
-
-	//Checking if the accessed page was the basic one or a custom url
-	if (path != "" && path != "/") {
-
-		//TODO Check if the path is just a number and get the matching page at load
-		$scope.getArticle(path.substring(1));
-	}
-
-	$scope.articles;
-
-	$scope.getPage($scope.page);
 
 	/*
 	 * Sets up the pagination part
@@ -196,4 +175,26 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 			}
 		}
 	});
+
+	var path = $location.path();
+
+	//Setting up pagination and latest articles
+	$scope.maxPage = 1;
+	$scope.setupPages();
+	$scope.latest();
+
+	//Setting the current page at 1 by default
+	$scope.page = 1;
+
+	//Checking if the accessed page was the basic one or a custom url
+	if (path != "" && path != "/") {
+
+		//TODO Check if the path is just a number and get the matching page at load
+		$scope.getArticle(path.substring(1));
+	}
+
+	$scope.articles;
+
+	$scope.getPage($scope.page);
+
 }]);
