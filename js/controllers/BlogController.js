@@ -86,7 +86,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 	$scope.getPage = function(pageNumber) {
 		$http({
 			method: 'GET',
-			url: 'http://blog.martin-verdier.com/api/page?number=' + pageNumber
+			url: 'http://blog.martin-verdier.com/api/get' //TODO http://blog.martin-verdier.com/api/page?number=' + pageNumber
 		}).then(function successCallback(response) {
 			//TODO Display a loading animation at the top
 
