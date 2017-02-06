@@ -114,12 +114,11 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		//GET request for a specific article
 		$scope.getArticle(url);
 
-		//TODO Display a loading animation at the top
-
+		//Scrolling up
+		document.body.scrollTop = document.documentElement.scrollTop = 0;
+		
 		//Switch to the article element
 		$location.path($scope.selectedArticle.url);
-
-		//TODO Hide the loading animation
 	};
 
 	/*
