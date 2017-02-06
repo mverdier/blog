@@ -71,3 +71,7 @@ footer a {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+nav ul {
+	list-style-type: none;
+}
