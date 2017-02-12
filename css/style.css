@@ -66,3 +66,10 @@ footer a {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+.its-a-me {
+	border-radius: 50%;
+	max-width: 80%;
+	max-height: 80%;
+	border: 4px solid #FCFCFC;
+}
