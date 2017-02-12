@@ -18,7 +18,7 @@
 				<div class="col s12">
 					<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
 
-					<a class="brand-logo" href="#" ng-click="back()">Blog - Tech and Code</a>
+					<a class="brand-logo" href="#" ng-click="back()">Blog - Martin Verdier</a>
 
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 						<li><a href="http://martin-verdier.com/">Home</a></li>
@@ -51,13 +51,13 @@
 				<div id="article-list" class="container col s12 m12 l8">
 					<div class="row">
 
-						<div class="col s12" ng-repeat="article in articles">
+						<div class="col s12" ng-repeat="article in articles | orderBy:'-publicationDate'">
 							<div class="card">
 								<div class="card-image" ng-if="article.pictureHeader && article.pictureHeader != ''">
 									<div class="title-image">
 										<img ng-src="http://resources.martin-verdier.com/articles/images/{{ article.pictureHeader }}">
 									</div>
-									<span class="card-title">{{ article.title }}</span>
+									<span class="article-picture-title card-title">{{ article.title }}</span>
 								</div>
 								<div class="card-content">
 									<span class="card-title" ng-if="!article.pictureHeader || article.pictureHeader == ''">{{ article.title }}</span>
@@ -81,7 +81,7 @@
 								<div class="title-image">
 									<img ng-src="http://resources.martin-verdier.com/articles/images/{{ selectedArticle.pictureHeader }}">
 								</div>
-								<span class="card-title">{{ selectedArticle.title }}</span>
+								<span class="article-picture-title card-title">{{ selectedArticle.title }}</span>
 							</div>
 							<div class="card-content">
 								<span class="card-title" ng-if="!selectedArticle.pictureHeader || selectedArticle.pictureHeader == ''">{{ selectedArticle.title }}</span>
@@ -118,7 +118,7 @@
 						<div class="card">
 							<div class="card-content">
 								<span class="card-title">Latest articles</span>
-								<div ng-repeat="latestArticle in latest">
+								<div ng-repeat="latestArticle in articles | orderBy:'-publicationDate'">
 									<div><a href="#" ng-click="openArticle(latestArticle.url)">{{ latestArticle.title }}</a></div>
 								</div>
 							</div>
@@ -127,7 +127,7 @@
 				</div>
 
 				<!-- The pagination part, at the bottom -->
-				<div class="pagination col s12 m12 l8 center">
+				<div id="pagination" class="pagination col s12 m12 l8 center">
 					 <ul class="pagination">
 						<li class="disabled"><a href="#"><i class="material-icons">chevron_left</i></a></li>
 						<li class="active green darken-1"><a href="#">1</a></li>
@@ -146,7 +146,7 @@
 				<div class="row">
 					<p>Blog designed and developed by <a href="http://martin-verdier.com/" target="_blank">Martin Verdier</a> in November 2016.</p>
 					<p>OCTOCAT® is the property of GitHub, Inc. You can find every legal stuff about it over <a href="https://github.com/logos" target="_blank">here</a>!</p>
-					<p>About open-source, you can use this blog template as yours, it's open-sourced right <a href="https://github.com/mverdier/blog-public" target="_blank">here on GitHub</a>!</p>
+					<p>About open-source, you can use this blog template as yours, it's open-sourced right <a href="https://github.com/mverdier/blog" target="_blank">here on GitHub</a>!</p>
 				</div>
 			</div>
 			<div class="footer-copyright">

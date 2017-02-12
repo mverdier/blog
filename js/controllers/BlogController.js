@@ -20,6 +20,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 
 			//Displays the correct page
 			document.getElementById('article-list').style.display = "none";
+			document.getElementById('pagination').style.display = "none";
 			document.getElementById('article-page').style.display = "block";
 			document.getElementById('breadcrumbs').style.display = "block";
 
@@ -114,12 +115,11 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		//GET request for a specific article
 		$scope.getArticle(url);
 
-		//TODO Display a loading animation at the top
-
+		//Scrolling up
+		document.body.scrollTop = document.documentElement.scrollTop = 0;
+		
 		//Switch to the article element
 		$location.path($scope.selectedArticle.url);
-
-		//TODO Hide the loading animation
 	};
 
 	/*
@@ -136,6 +136,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 	$scope.back = function() {
 		$location.path("");
 		document.getElementById('article-list').style.display = "block";
+		document.getElementById('pagination').style.display = "block";
 		document.getElementById('article-page').style.display = "none";
 		document.getElementById('breadcrumbs').style.display = "none";
 	};
