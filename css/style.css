@@ -82,6 +82,9 @@ footer a {
 	max-width: 60%;
 	max-height: 60%;
 	border: 4px solid #FCFCFC;
+	display: block;
+	margin: auto;
+	margin-top: 20px;
 }
 
 nav ul {
