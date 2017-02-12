@@ -72,6 +72,11 @@ footer a {
 	margin-bottom: 20px;
 }
 
+.profile-picture {
+	width: 100%;
+	margin: auto;
+}
+
 .its-a-me {
 	border-radius: 50%;
 	max-width: 60%;
