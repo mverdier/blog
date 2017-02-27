@@ -4,14 +4,17 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 	 * Gets an article content for a specified article url
 	 */
 	$scope.getArticle = function(url) {
+		var res = url.split("/");
+		
 		$http({
 			method: 'GET',
-			url: 'http://blog.martin-verdier.com/api/article?url=' + url
+			url: 'http://blog.martin-verdier.com/api/article?url=' + res[0]
 		}).then(function successCallback(response) {
 
 			if (response.data.length === 0) {
 				$location.path("");
 			} else {
+				$location.path(res[0]);
 				$scope.selectedArticle = response.data;
 				
 				//Displays the correct page
