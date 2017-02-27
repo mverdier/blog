@@ -8,26 +8,21 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 			method: 'GET',
 			url: 'http://blog.martin-verdier.com/api/article?url=' + url
 		}).then(function successCallback(response) {
-			//TODO Display a loading animation at the top
 
 			if (response.data.length === 0) {
-				//TODO There were no article to display at this URL, displaying an error message
+				$location.path("");
 			} else {
 				$scope.selectedArticle = response.data;
+				
+				//Displays the correct page
+				document.getElementById('article-list').style.display = "none";
+				document.getElementById('pagination').style.display = "none";
+				document.getElementById('article-page').style.display = "block";
+				document.getElementById('breadcrumbs').style.display = "block";
 			}
-
-			//TODO Hide loading animation
-
-			//Displays the correct page
-			document.getElementById('article-list').style.display = "none";
-			document.getElementById('pagination').style.display = "none";
-			document.getElementById('article-page').style.display = "block";
-			document.getElementById('breadcrumbs').style.display = "block";
 
 		}, function errorCallback(response) {
 			//TODO Display an error message
-
-			//TODO Hide loading animation
 		});
 	};
 
