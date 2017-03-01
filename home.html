@@ -94,7 +94,7 @@
 									<div class="meta">
 										<p class="written-by">Written by {{ selectedArticle.author }} on {{ selectedArticle.publicationDate | date: 'EEEE, MMMM d, y' }}</p>
 										<a class="twitter blue lighten-1 waves-effect waves-light btn" ng-href="https://twitter.com/intent/tweet{{selectedArticle.tweet}}" target="_blank">Tweet</a>
-										<a class="facebook indigo darken-3 waves-effect waves-light btn" href="https://www.facebook.com/sharer/sharer.php?u={{selectedArticle.facebook}}&amp;src=sdkpreparse" target="_blank">Share</a>
+										<a class="facebook indigo darken-3 waves-effect waves-light btn" href="https://www.facebook.com/sharer/sharer.php{{selectedArticle.facebook}}&amp;src=sdkpreparse" target="_blank">Share</a>
 									</div>
 								</div>
 							</div>
