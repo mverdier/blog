@@ -22,6 +22,10 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 				document.getElementById('pagination').style.display = "none";
 				document.getElementById('article-page').style.display = "block";
 				document.getElementById('breadcrumbs').style.display = "block";
+
+				//Switch to the article element
+				$location.path($scope.selectedArticle.url);
+				document.title = $scope.selectedArticle.title;
 			}
 
 		}, function errorCallback(response) {
@@ -115,10 +119,6 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 
 		//Scrolling up
 		document.body.scrollTop = document.documentElement.scrollTop = 0;
-		
-		//Switch to the article element
-		$location.path($scope.selectedArticle.url);
-		document.title = $scope.selectedArticle.title;
 	};
 
 	/*
