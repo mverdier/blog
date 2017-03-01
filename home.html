@@ -93,6 +93,7 @@
 
 									<div class="meta">
 										<p>Written by {{ selectedArticle.author }} on {{ selectedArticle.publicationDate | date: 'EEEE, MMMM d, y' }}</p>
+										<a ng-if="selectedArticle.url != admin" class="twitter-share-button" ng-href="https://twitter.com/intent/tweet{{selectedArticle.tweet}}" target="_blank">Tweet</a>
 									</div>
 								</div>
 							</div>
