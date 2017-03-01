@@ -118,6 +118,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		
 		//Switch to the article element
 		$location.path($scope.selectedArticle.url);
+		document.title = $scope.selectedArticle.title;
 	};
 
 	/*
@@ -137,6 +138,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		document.getElementById('pagination').style.display = "block";
 		document.getElementById('article-page').style.display = "none";
 		document.getElementById('breadcrumbs').style.display = "none";
+		document.title = "Blog - Martin Verdier";
 	};
 
 	/*
