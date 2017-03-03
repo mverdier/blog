@@ -109,3 +109,11 @@ nav ul {
 #pagination {
 	display: none;
 }
+
+.social {
+	text-align: center;
+}
+
+.twitter, .github {
+	margin: auto;
+}
