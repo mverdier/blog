@@ -117,3 +117,7 @@ nav ul {
 .twitter, .github {
 	margin: auto;
 }
+
+.latest {
+	margin-bottom: 15px;
+}
