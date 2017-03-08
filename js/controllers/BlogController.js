@@ -3,11 +3,19 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 	/*
 	 * Meta descriptors, currently only supporting Twitter
 	 */
-	$scope.meta = {
-		title: "Blog - Martin Verdier",
-		description: "Tech, travels, thoughts. Also a whole bunch of other things.",
-		image: ""
-	};
+	var metaTags = function(title, description, image) {
+		var metas = document.getElementsByTagName("meta");
+		
+		for (var i = 0; i < metas.length; i++) {
+			if (metas[i].getAttribute("name") && metas[i].getAttribute("name") === "twitter:title") {
+				metas[i].setAttribute("content", title);
+			} else if (metas[i].getAttribute("name") && metas[i].getAttribute("name") === "twitter:description") {
+				metas[i].setAttribute("content", description);
+			} else if (metas[i].getAttribute("name") && metas[i].getAttribute("name") === "twitter:image") {
+				metas[i].setAttribute("content", image);
+			}
+		}
+	}
 	
 	/*
 	 * Gets an article content for a specified article url
@@ -36,9 +44,11 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 				$location.path($scope.selectedArticle.url);
 				document.title = $scope.selectedArticle.title;
 				
-				$scope.meta.title = $scope.selectedArticle.title;
-				$scope.meta.description = $scope.selectedArticle.preview;
-				$scope.meta.image = $scope.selectedArticle.pictureHeader ? "http://resources.martin-verdier.com/articles/images/" + $scope.selectedArticle.pictureHeader : ""; 
+				metaTags(
+					$scope.selectedArticle.title, 
+					$scope.selectedArticle.preview,
+					$scope.selectedArticle.pictureHeader ? "http://resources.martin-verdier.com/articles/images/" + $scope.selectedArticle.pictureHeader : ""
+				);
 			}
 
 		}, function errorCallback(response) {
@@ -153,9 +163,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		document.getElementById('breadcrumbs').style.display = "none";
 		document.title = "Blog - Martin Verdier";
 		
-		$scope.meta.title = "Blog - Martin Verdier";
-		$scope.meta.description = "Tech, travels, thoughts. Also a whole bunch of other things.";
-		$scope.meta.image = "";
+		metaTags("Blog - Martin Verdier", "Tech, travels, thoughts. Also a whole bunch of other things.", "");
 	};
 
 	/*
