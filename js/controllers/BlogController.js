@@ -153,7 +153,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		document.getElementById('breadcrumbs').style.display = "none";
 		document.title = "Blog - Martin Verdier";
 		
-		$scope.meta.title = "Blog - Martin Verdier;
+		$scope.meta.title = "Blog - Martin Verdier";
 		$scope.meta.description = "Tech, travels, thoughts. Also a whole bunch of other things.";
 		$scope.meta.image = "";
 	};
