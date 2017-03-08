@@ -1,6 +1,15 @@
 app.controller('BlogController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
 	/*
+	 * Meta descriptors, currently only supporting Twitter
+	 */
+	$scope.meta = {
+		title: "Blog - Martin Verdier",
+		description: "Tech, travels, thoughts. Also a whole bunch of other things.",
+		image: ""
+	};
+	
+	/*
 	 * Gets an article content for a specified article url
 	 */
 	$scope.getArticle = function(url) {
@@ -176,7 +185,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 			}
 		}
 	});
-
+	
 	var path = $location.path();
 
 	//Setting up pagination and latest articles
