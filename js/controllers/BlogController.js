@@ -35,6 +35,10 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 				//Switch to the article element
 				$location.path($scope.selectedArticle.url);
 				document.title = $scope.selectedArticle.title;
+				
+				$scope.meta.title = $scope.selectedArticle.title;
+				$scope.meta.description = $scope.selectedArticle.preview;
+				$scope.meta.image = $scope.selectedArticle.pictureHeader ? "http://resources.martin-verdier.com/articles/images/" + $scope.selectedArticle.pictureHeader : ""; 
 			}
 
 		}, function errorCallback(response) {
@@ -148,6 +152,10 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		document.getElementById('article-page').style.display = "none";
 		document.getElementById('breadcrumbs').style.display = "none";
 		document.title = "Blog - Martin Verdier";
+		
+		$scope.meta.title = "Blog - Martin Verdier;
+		$scope.meta.description = "Tech, travels, thoughts. Also a whole bunch of other things."
+		$scope.meta.image = "";
 	};
 
 	/*
