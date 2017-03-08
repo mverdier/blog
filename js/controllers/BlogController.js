@@ -163,7 +163,7 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		document.getElementById('breadcrumbs').style.display = "none";
 		document.title = "Blog - Martin Verdier";
 		
-		metaTags("Blog - Martin Verdier", "Tech, travels, thoughts. Also a whole bunch of other things.", "");
+		metaTags("Blog - Martin Verdier", "Tech, travels, thoughts. Also a whole bunch of other things.", "http://resources.martin-verdier.com/blog/images/its-a-me.png");
 	};
 
 	/*
