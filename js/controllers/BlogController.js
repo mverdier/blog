@@ -1,23 +1,6 @@
 app.controller('BlogController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
 	/*
-	 * Meta descriptors, currently only supporting Twitter
-	 */
-	var metaTags = function(title, description, image) {
-		var metas = document.getElementsByTagName("meta");
-		
-		for (var i = 0; i < metas.length; i++) {
-			if (metas[i].getAttribute("name") && metas[i].getAttribute("name") === "twitter:title") {
-				metas[i].setAttribute("content", title);
-			} else if (metas[i].getAttribute("name") && metas[i].getAttribute("name") === "twitter:description") {
-				metas[i].setAttribute("content", description);
-			} else if (metas[i].getAttribute("name") && metas[i].getAttribute("name") === "twitter:image") {
-				metas[i].setAttribute("content", image);
-			}
-		}
-	}
-	
-	/*
 	 * Gets an article content for a specified article url
 	 */
 	$scope.getArticle = function(url) {
@@ -43,12 +26,6 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 				//Switch to the article element
 				$location.path($scope.selectedArticle.url);
 				document.title = $scope.selectedArticle.title;
-				
-				metaTags(
-					$scope.selectedArticle.title, 
-					$scope.selectedArticle.preview,
-					$scope.selectedArticle.pictureHeader ? "http://resources.martin-verdier.com/articles/images/" + $scope.selectedArticle.pictureHeader : ""
-				);
 			}
 
 		}, function errorCallback(response) {
@@ -162,8 +139,6 @@ app.controller('BlogController', ['$scope', '$http', '$location', function($scop
 		document.getElementById('article-page').style.display = "none";
 		document.getElementById('breadcrumbs').style.display = "none";
 		document.title = "Blog - Martin Verdier";
-		
-		metaTags("Blog - Martin Verdier", "Tech, travels, thoughts. Also a whole bunch of other things.", "http://resources.martin-verdier.com/blog/images/its-a-me.png");
 	};
 
 	/*
