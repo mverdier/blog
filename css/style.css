@@ -121,3 +121,7 @@ nav ul {
 .latest {
 	margin-bottom: 10px;
 }
+
+.card-action a {
+	color: #039be5 !important;	
+}
